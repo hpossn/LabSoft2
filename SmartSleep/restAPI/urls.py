@@ -11,4 +11,6 @@ urlpatterns  = [
         url(r'ruidos', views.ruidos, name="ruidos"),
         url(r'luminosidades', views.luminosidades, name="luminosidades"),
         url(r'', views.umidades, name="umidades"),
+#####################Urls para cadastro###################### -->
+        url(r'cadastroFis', views.cadastroFis, name="cadastroFis"),
 ]

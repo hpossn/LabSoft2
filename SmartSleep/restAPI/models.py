@@ -12,3 +12,11 @@ class information(Document):
     data = FloatField(required=True)
     dataType = StringField(required=True)
     dateTime = DateTimeField(default=datetime.datetime.now)
+
+class ClienteFis(Document):
+    nome = StringField(required=True)
+    CPF = StringField(required=True)
+    endereco = StringField(required=True)
+    email = StringField(required=True)
+    telefone = StringField(required=True)
+    user = ObjectIdField(required=True)
