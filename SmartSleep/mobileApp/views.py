@@ -3,6 +3,7 @@ from django.template.context_processors import csrf
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 import requests
+from .models import *
 
 @csrf_exempt
 def login(request):
@@ -45,24 +46,79 @@ def cadastroFis(request):
         endereco = request.POST['endereco']
         email = request.POST['email']
         telefone = request.POST['telefone']
+        codigo = request.POST['codigo']
 
-        r = requests.post("http://127.0.0.1:8000/restAPI/cadastroFis", data={"username" : username, "password" : password, "nome" : nome, "CPF" : CPF, "enderco" : endereco, "email" : email, "telefone" : telefone})
+        #r = requests.post("http://127.0.0.1:8000/restAPI/cadastroFis", data={"username" : username, "password" : password, "nome" : nome, "CPF" : CPF, "enderco" : endereco, "email" : email, "telefone" : telefone, "codigo" : codigo})
 
+        # cria um novo usuario
+        usuario = User(username=username, password=password)
+        usuario.save()
+        # cria um objeto clienteFis para o novo usuario
+        clienteFis = ClienteFis(nome=nome, CPF=CPF, endereco=endereco, email=email, telefone=telefone, codigo=codigo, user=usuario.id)
+        clienteFis.save()
 
         return HttpResponseRedirect('/mobileApp/login')
+
+
+
+
 
 
 
 @csrf_exempt
 def cadastroJur(request):
 
+    if request.method == "GET":
+
         return render(request, 'cadastroJur.html', {})
 
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        razao_social = request.POST['razao_social']
+        CNPJ = request.POST['CNPJ']
+        endereco = request.POST['endereco']
+        email = request.POST['email']
+        telefone = request.POST['telefone']
+
+
+        #r = requests.post("http://127.0.0.1:8000/restAPI/cadastroJur", data={"username" : username, "password" : password, "razao_social" : razao_social, "CNPJ" : CNPJ, "enderco" : endereco, "email" : email, "telefone" : telefone})
+        usuario = User(username=username, password=password)
+        usuario.save()
+        # cria um objeto clienteJur para o novo usuario
+        clienteJur = ClienteJur(razao_social=razao_social, CNPJ=CNPJ, endereco=endereco, email=email, telefone=telefone, user=usuario.id)
+        clienteJur.save()
+
+
+        return HttpResponseRedirect('/mobileApp/login')
  ########################################### -->
 
 
 ######################Views da mainpage de um usuario pessoa juridica##################### -->
 @csrf_exempt
 def mainpageJur(request):
+    if request.method == "GET":
+
         return render(request, 'mainpageJur.html', {})
-########################################### -->
+
+    if request.method == "POST":
+
+        usuario  =request.POST['usuario']
+        temperatura = request.POST['temperatura']
+        umidade = request.POST['umidade']
+        ruido = request.POST['ruido']
+        luminosidade = request.POST['luminosidade']
+        link = request.POST['link']
+        link_foto = request.POST['link_foto']
+
+
+
+
+        #r = requests.post("http://127.0.0.1:8000/restAPI/mainpageJur", data={"temperatura" : temperatura, "umidade" : umidade, "ruido" : ruido, "luminosidade" : lumisidade, "link" : link, "link_foto" : link_foto})
+        #busca o usuário
+        user = User.objects(username = usuario)
+        # cria um objeto produto para o novo usuario
+        produto = Produto(temperatura=temperatura, umidade=umidade, ruido=ruido, luminosidade=luminosidade, link=link, link_foto=link_foto, user=user[0].id)
+        produto.save()
+
+        return render(request, 'mainpageJur.html', {})

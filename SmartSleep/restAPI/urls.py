@@ -9,6 +9,5 @@ urlpatterns  = [
         url(r'temperaturas', views.temperaturas, name="temperaturas"),
         url(r'umidades', views.umidades, name="umidades"),
         url(r'', views.umidades, name="umidades"),
-#####################Urls para cadastro###################### -->
-        url(r'cadastroFis', views.cadastroFis, name="cadastroFis"),
+
 ]
