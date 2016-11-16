@@ -20,3 +20,4 @@ class ClienteFis(Document):
     email = StringField(required=True)
     telefone = StringField(required=True)
     user = ObjectIdField(required=True)
+    dateTime = DateTimeField(default=datetime.datetime.now)
