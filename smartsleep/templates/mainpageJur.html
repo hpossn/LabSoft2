@@ -1,67 +1,154 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+    {% load static %}
+
     <meta charset="utf-8">
-    <title>Smartsleep</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Início</title>
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static "vendor/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+
+
+    <!-- Plugin CSS -->
+    <link href="{% static "vendor/magnific-popup/magnific-popup.css" %}" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="{% static "css/creative.css" %}" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
   </head>
   <body>
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menuOpcoes">
+                    <span class="sr-only">Mudar navegação</span>Menu<i class="fa fa-bars"></i>
+                </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="menuOpcoes">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#login">Login</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services">Conheça nossos produtos</a>
+                    </li>
+
+                    <li>
+                        <a class="page-scroll" href="#contact">Contato</a>
+                    </li>
+                    <!-- #####################CADASTRO###################### -->
+
+                    <li>
+                        <a class="page-scroll" href="#cadastro">Cadastrar</a>
+                    </li>
+                    <!-- ########################################### -->
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
     <form class="" action="" method="post">  {% csrf_token %}
+      <div class="form-group row">
+        <label for="usuario" class="col-xs-2 col-form-label">Usuário</label>
+        <div class="col-xs-10">
+          <input class="form-control" type="text" value="" id="usuario">
+        </div>
+      </div>
 
-      <label>
-        Usuario
-      </label>
+      <div class="form-group row">
+        <label for="temperatura" class="col-xs-2 col-form-label">Temperatura</label>
+        <div class="col-xs-10">
+          <input class="form-control" type="text" value="" id="temperatura">
+        </div>
+      </div>
 
-      <input type="text" name="usuario" value="">
-      <br>
+      <div class="form-group row">
+        <label for="umidade" class="col-xs-2 col-form-label">Umidade</label>
+        <div class="col-xs-10">
+          <input class="form-control" type="text" value="" id="umidade">
+        </div>
+      </div>
 
+      <div class="form-group row">
+        <label for="ruido" class="col-xs-2 col-form-label">Ruído</label>
+        <div class="col-xs-10">
+          <input class="form-control" type="text" value="" id="ruido">
+        </div>
+      </div>
 
-      <label>
-        Temperatura
-      </label>
+      <div class="form-group row">
+        <label for="luminosidade" class="col-xs-2 col-form-label">Luminosidade</label>
+        <div class="col-xs-10">
+          <input class="form-control" type="text" value="" id="luminosidade">
+        </div>
+      </div>
 
-      <input type="text" name="temperatura" value="">
-      <br>
+      <div class="form-group row">
+          <label for="linkproduto" class="col-xs-2 col-form-label">Link para o produto</label>
+          <div class="col-xs-10">
+            <input class="form-control" type="url" value="" id="linkproduto">
+          </div>
+      </div>
 
-      <label>
-        Umidade
-      </label>
-
-      <input type="text" name="umidade" value="">
-      <br>
-
-      <label>
-        Ruido
-      </label>
-
-      <input type="text" name="ruido" value="">
-      <br>
-
-      <label>
-        Luminosidade
-      </label>
-
-      <input type="text" name="luminosidade" value="">
-      <br>
-
-      <label>
-        Link do produto no site da empresa
-      </label>
-
-      <input type="text" name="link" value="">
-      <br>
-
-      <label>
-        Link para uma foto do produto
-      </label>
-
-      <input type="text" name="link_foto" value="">
-      <br>
+      <div class="form-group row">
+          <label for="linkfoto" class="col-xs-2 col-form-label">Link para foto do produto</label>
+          <div class="col-xs-10">
+            <input class="form-control" type="url" value="" id="linkfoto">
+          </div>
+      </div>
 
       <button type="submit">
         Cadastrar
       </button>
-
     </form>
+
+    <!-- jQuery -->
+    <!--<script src="{% static "vendor/jquery/jquery.js" %}"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static "vendor/bootstrap/js/bootstrap.min.js" %}"></script>
+
+    <!-- Plugin JavaScript -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="{% static "vendor/scrollreveal/scrollreveal.min.js" %}"></script>
+    <script src="{% static "vendor/magnific-popup/jquery.magnific-popup.min.js" %}"></script>
+
+
+
+    <!-- Theme JavaScript -->
+    <script src="{% static "js/creative.min.js" %}"></script>
 
   </body>
 </html>
