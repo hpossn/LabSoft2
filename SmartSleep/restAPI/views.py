@@ -56,17 +56,18 @@ def login(request):
 
 @csrf_exempt
 def temperaturas(request):
+    deviceID = request.GET['deviceID']
     if request.method == 'GET' and 'ultimosDias' in request.GET:
         result = [ ]
         if request.GET['ultimosDias']:
             ndias = int(request.GET['ultimosDias'])
-            result = information.objects(Q(dataType = 'temperatura') & Q(dateTime__gte = datetime.now() - timedelta(days = ndias)))
+            result = information.objects(Q(dataType = 'temperatura') & Q(dateTime__gte = datetime.now() - timedelta(days = ndias)) & Q(deviceID=deviceID))
         return HttpResponse(result.to_json(), content_type="application/json")
     if request.method == 'GET' and 'mediaUltimosDias' in request.GET:
         result = 0
         if request.GET['mediaUltimosDias']:
             ndias = int(request.GET['mediaUltimosDias'])
-            result = information.objects(Q(dataType = 'temperatura') & Q(dateTime__gte = datetime.now() - timedelta(days = ndias))).average('data')
+            result = information.objects(Q(dataType = 'temperatura') & Q(dateTime__gte = datetime.now() - timedelta(days = ndias)) & Q(deviceID=deviceID)).average('data')
         return HttpResponse(result, content_type="application/json")
     if request.method == 'GET' and 'mediasPorDias' in request.GET:
         result = []
@@ -80,18 +81,20 @@ def temperaturas(request):
             oneDay = today
 
             while counter > 0:
-                avg = information.objects(Q(dataType = 'temperatura') & Q(dateTime__gte=oneDay) & Q(dateTime__lt=oneDay + timedelta(days =1))).average('data')
+                avg = information.objects(Q(dataType = 'temperatura') & Q(dateTime__gte=oneDay) & Q(dateTime__lt=oneDay + timedelta(days =1)) & Q(deviceID=deviceID)).average('data')
                 result.append(avg)
                 oneDay = oneDay - timedelta(days = 1)
                 counter = counter - 1
 
         return HttpResponse(json.dumps(result), content_type="application/json")
     if request.method == 'GET':
-        result = information.objects(dataType = 'temperatura')
+        result = information.objects(dataType = 'temperatura' & Q(deviceID=deviceID))
         return HttpResponse(result.to_json(), content_type="application/json")
 
 @csrf_exempt
 def umidades(request):
+
+    deviceID = request.GET['deviceID']
     if request.method == 'GET' and 'mediasPorDias' in request.GET:
         result = []
         if request.GET['mediasPorDias']:
@@ -104,7 +107,7 @@ def umidades(request):
             oneDay = today
 
             while counter > 0:
-                avg = information.objects(Q(dataType = 'umidade') & Q(dateTime__gte=oneDay) & Q(dateTime__lt=oneDay + timedelta(days =1))).average('data')
+                avg = information.objects(Q(dataType = 'umidade') & Q(dateTime__gte=oneDay) & Q(dateTime__lt=oneDay + timedelta(days =1)) & Q(deviceID=deviceID)).average('data')
                 result.append(avg)
                 oneDay = oneDay - timedelta(days = 1)
                 counter = counter - 1
@@ -128,18 +131,20 @@ def luminosidades(request):
             oneDay = today
 
             while counter > 0:
-                avg = information.objects(Q(dataType = 'luminosidade') & Q(dateTime__gte=oneDay) & Q(dateTime__lt=oneDay + timedelta(days =1))).average('data')
+                avg = information.objects(Q(dataType = 'luminosidade') & Q(dateTime__gte=oneDay) & Q(dateTime__lt=oneDay + timedelta(days =1)) & Q(deviceID=deviceID)).average('data')
                 result.append(avg)
                 oneDay = oneDay - timedelta(days = 1)
                 counter = counter - 1
 
         return HttpResponse(json.dumps(result), content_type="application/json")
     if request.method == 'GET':
-        result = information.objects(dataType = 'luminosidade')
+        result = information.objects(dataType = 'luminosidade' & Q(deviceID=deviceID))
         return HttpResponse(result.to_json(), content_type="application/json")
 
 @csrf_exempt
 def ruidos(request):
+
+    deviceID = request.GET['devic4eID']
     if request.method == 'GET' and 'mediasPorDias' in request.GET:
         result = []
         if request.GET['mediasPorDias']:
@@ -152,12 +157,12 @@ def ruidos(request):
             oneDay = today
 
             while counter > 0:
-                avg = information.objects(Q(dataType = 'ruido') & Q(dateTime__gte=oneDay) & Q(dateTime__lt=oneDay + timedelta(days =1))).average('data')
+                avg = information.objects(Q(dataType = 'ruido') & Q(dateTime__gte=oneDay) & Q(dateTime__lt=oneDay + timedelta(days =1)) & Q(deviceID=deviceID)).average('data')
                 result.append(avg)
                 oneDay = oneDay - timedelta(days = 1)
                 counter = counter - 1
 
         return HttpResponse(json.dumps(result), content_type="application/json")
     if request.method == 'GET':
-        result = information.objects(dataType = 'ruido')
+        result = information.objects(dataType = 'ruido' & Q(deviceID=deviceID))
         return HttpResponse(result.to_json(), content_type="application/json")
