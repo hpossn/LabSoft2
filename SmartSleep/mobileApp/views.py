@@ -130,8 +130,12 @@ def mainpageJur(request):
         #r = requests.post("http://127.0.0.1:8000/restAPI/mainpageJur", data={"temperatura" : temperatura, "umidade" : umidade, "ruido" : ruido, "luminosidade" : lumisidade, "link" : link, "link_foto" : link_foto})
         #busca o usuário
         user = User.objects(username = usuario)
-        # cria um objeto produto para o novo usuario
-        produto = Produto(temperatura=temperatura, umidade=umidade, ruido=ruido, luminosidade=luminosidade, link=link, link_foto=link_foto, user=user[0].id)
-        produto.save()
+
+        if len(user) == 0:
+            print("oi")
+        else:
+            # cria um objeto produto para o novo usuario
+            produto = Produto(temperatura=temperatura, umidade=umidade, ruido=ruido, luminosidade=luminosidade, link=link, link_foto=link_foto, user=user[0].id)
+            produto.save()
 
         return render(request, 'mainpageJur.html', {})
