@@ -83,7 +83,7 @@
                               <canvas id="luminosidadeCanvas" >
                                   <script>
                                     $.ajax({
-                                        url: "/restAPI/luminosidades?mediasPorDias=7",
+                                        url: "/restAPI/luminosidades?mediasPorDias=7&deviceID=" + {{deviceID}},
                                         type: 'GET',
                                         dataType: 'json',
                                         error: function() {
@@ -126,7 +126,7 @@
                               <canvas id="temperaturaCanvas" >
                                 <script>
                                   $.ajax({
-                                      url: "/restAPI/temperaturas?mediasPorDias=7",
+                                      url: "/restAPI/temperaturas?mediasPorDias=7&deviceID=" + {{deviceID}},
                                       type: 'GET',
                                       dataType: 'json',
                                       error: function() {
@@ -170,7 +170,7 @@
                               <canvas id="umidadeCanvas" >
                                 <script>
                                   $.ajax({
-                                      url: "/restAPI/umidades?mediasPorDias=7",
+                                      url: "/restAPI/umidades?mediasPorDias=7&deviceID=" + {{deviceID}},
                                       type: 'GET',
                                       dataType: 'json',
                                       error: function() {
@@ -213,7 +213,7 @@
                               <canvas id="ruidoCanvas" >
                                 <script>
                                   $.ajax({
-                                      url: "/restAPI/ruidos?mediasPorDias=7",
+                                      url: "/restAPI/ruidos?mediasPorDias=7&deviceID=" + {{deviceID}},
                                       type: 'GET',
                                       dataType: 'json',
                                       error: function() {

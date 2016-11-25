@@ -47,6 +47,7 @@ def login(request):
                 #User.objects.create(username=username, password=password).save()
             else:
                 reply['result'] = "Login Okay"
+                reply['deviceID'] = user.deviceID
                 print('logado: ' + user.username)
         except Exception as e:
             print(e)
@@ -56,7 +57,11 @@ def login(request):
 
 @csrf_exempt
 def temperaturas(request):
-    deviceID = request.GET['deviceID']
+    deviceID = None
+
+    if 'deviceID' in request.GET:
+        deviceID = request.GET['deviceID']
+
     if request.method == 'GET' and 'ultimosDias' in request.GET:
         result = [ ]
         if request.GET['ultimosDias']:
@@ -94,7 +99,11 @@ def temperaturas(request):
 @csrf_exempt
 def umidades(request):
 
-    deviceID = request.GET['deviceID']
+    deviceID = None
+
+    if 'deviceID' in request.GET:
+        deviceID = request.GET['deviceID']
+
     if request.method == 'GET' and 'mediasPorDias' in request.GET:
         result = []
         if request.GET['mediasPorDias']:
@@ -119,6 +128,12 @@ def umidades(request):
 
 @csrf_exempt
 def luminosidades(request):
+
+    deviceID = None
+
+    if 'deviceID' in request.GET:
+        deviceID = request.GET['deviceID']
+
     if request.method == 'GET' and 'mediasPorDias' in request.GET:
         result = []
         if request.GET['mediasPorDias']:
@@ -144,7 +159,11 @@ def luminosidades(request):
 @csrf_exempt
 def ruidos(request):
 
-    deviceID = request.GET['devic4eID']
+    deviceID = None
+
+    if 'deviceID' in request.GET:
+        deviceID = request.GET['deviceID']
+
     if request.method == 'GET' and 'mediasPorDias' in request.GET:
         result = []
         if request.GET['mediasPorDias']:

@@ -19,7 +19,7 @@ def login(request):
         r = r.json()
 
         if r['result'] == "Login Okay":
-            return redirect('/mobileApp/home')
+            return redirect('/mobileApp/home?deviceID='+r['result'])
         else:
             return redirect('/mobileApp/login')
 
@@ -28,12 +28,12 @@ def login(request):
 def home(request):
     if request.method == 'GET':
 
-        temperaturas = get_temperaturas()
+        temperaturas = get_temperaturas(request.GET['deviceID'])
 
-        return render(request, 'mainPage.html', {})
+        return render(request, 'mainPage.html', {'deviceID' : request.GET['deviceID']})
 
-def get_temperaturas():
-    all_temps = requests.get("http://104.236.90.130:8000/restAPI/temperaturas")
+def get_temperaturas(deviceID):
+    all_temps = requests.get("http://104.236.90.130:8000/restAPI/temperaturas?deviceID=" + deviceID)
 
     firsDay=[]
     secondDay=[]
