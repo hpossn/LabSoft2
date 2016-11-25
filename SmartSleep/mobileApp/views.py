@@ -19,7 +19,7 @@ def login(request):
         r = r.json()
 
         if r['result'] == "Login Okay":
-            return redirect('/mobileApp/home?deviceID='+r['result'])
+            return redirect('/mobileApp/home?deviceID='+r['deviceID'])
         else:
             return redirect('/mobileApp/login')
 
