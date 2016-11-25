@@ -93,7 +93,7 @@ def temperaturas(request):
 
         return HttpResponse(json.dumps(result), content_type="application/json")
     if request.method == 'GET':
-        result = information.objects(dataType = 'temperatura' & Q(deviceID=deviceID))
+        result = information.objects(Q(dataType = 'temperatura') & Q(deviceID=deviceID))
         return HttpResponse(result.to_json(), content_type="application/json")
 
 @csrf_exempt
@@ -123,7 +123,7 @@ def umidades(request):
 
         return HttpResponse(json.dumps(result), content_type="application/json")
     if request.method == 'GET':
-        result = information.objects(dataType = 'umidade')
+        result = information.objects(Q(dataType = 'umidade')& Q(deviceID=deviceID))
         return HttpResponse(result.to_json(), content_type="application/json")
 
 @csrf_exempt
@@ -153,7 +153,7 @@ def luminosidades(request):
 
         return HttpResponse(json.dumps(result), content_type="application/json")
     if request.method == 'GET':
-        result = information.objects(dataType = 'luminosidade' & Q(deviceID=deviceID))
+        result = information.objects(Q(dataType = 'luminosidade') & Q(deviceID=deviceID))
         return HttpResponse(result.to_json(), content_type="application/json")
 
 @csrf_exempt
@@ -183,5 +183,5 @@ def ruidos(request):
 
         return HttpResponse(json.dumps(result), content_type="application/json")
     if request.method == 'GET':
-        result = information.objects(dataType = 'ruido' & Q(deviceID=deviceID))
+        result = information.objects(Q(dataType = 'ruido') & Q(deviceID=deviceID))
         return HttpResponse(result.to_json(), content_type="application/json")
