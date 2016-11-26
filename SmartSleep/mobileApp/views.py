@@ -48,14 +48,13 @@ def get_temperaturas(deviceID):
 def cadastroFis(request):
 
     if request.method == "GET":
-
         return render(request, 'cadastroFis.html', {})
 
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
         nome = request.POST['nome']
-        CPF = request.POST['CPF']
+        CPF = request.POST['cpf']
         endereco = request.POST['endereco']
         email = request.POST['email']
         telefone = request.POST['telefone']
@@ -64,7 +63,7 @@ def cadastroFis(request):
         #r = requests.post("http://127.0.0.1:8000/restAPI/cadastroFis", data={"username" : username, "password" : password, "nome" : nome, "CPF" : CPF, "enderco" : endereco, "email" : email, "telefone" : telefone, "codigo" : codigo})
 
         # cria um novo usuario
-        usuario = User(username=username, password=password)
+        usuario = User(username=username, password=password, deviceID=codigo)
         usuario.save()
         # cria um objeto clienteFis para o novo usuario
         clienteFis = ClienteFis(nome=nome, CPF=CPF, endereco=endereco, email=email, telefone=telefone, codigo=codigo, user=usuario.id)
@@ -88,8 +87,8 @@ def cadastroJur(request):
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
-        razao_social = request.POST['razao_social']
-        CNPJ = request.POST['CNPJ']
+        razao_social = request.POST['razaosocial']
+        CNPJ = request.POST['cnpj']
         endereco = request.POST['endereco']
         email = request.POST['email']
         telefone = request.POST['telefone']
@@ -122,7 +121,7 @@ def mainpageJur(request):
         ruido = request.POST['ruido']
         luminosidade = request.POST['luminosidade']
         link = request.POST['link']
-        link_foto = request.POST['link_foto']
+        link_foto = request.POST['linkfoto']
 
 
 

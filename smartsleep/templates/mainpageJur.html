@@ -40,97 +40,87 @@
     <![endif]-->
 
   </head>
-  <body>
+  <body id="page-top">
 
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menuOpcoes">
-                    <span class="sr-only">Mudar navegação</span>Menu<i class="fa fa-bars"></i>
-                </button>
+    <section class="bg-primary" id="login">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center col-sm-12 col-xm-12 ">
+                    <h2 class="section-heading">Cadastro de Produto</h2>
+                    <hr class="light">
+                </div>
+                <div id="divCadastroBagagem" class="text-center">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-lg-4 col-lg-offset-4 text-center">
+                            <form class="" action="" method="post">  {% csrf_token %}
+                              <div class="form-group row">
+                                <label for="usuario" class="col-xs-30 col-form-label">Usuário</label>
+                                <div class="col-xs-20">
+                                  <input class="form-control" type="text" value="" name="usuario">
+                                </div>
+                              </div>
+                              <br>
+
+                              <div class="form-group row">
+                                <label for="temperatura" class="col-xs-30 col-form-label">Temperatura</label>
+                                <div class="col-xs-20">
+                                  <input class="form-control" type="text" value="" name="temperatura">
+                                </div>
+                              </div>
+                              <br>
+
+                              <div class="form-group row">
+                                <label for="umidade" class="col-xs-30 col-form-label">Umidade</label>
+                                <div class="col-xs-20">
+                                  <input class="form-control" type="text" value="" name="umidade">
+                                </div>
+                              </div>
+                              <br>
+
+                              <div class="form-group row">
+                                <label for="ruido" class="col-xs-30 col-form-label">Ruído</label>
+                                <div class="col-xs-20">
+                                  <input class="form-control" type="text" value="" name="ruido">
+                                </div>
+                              </div>
+                              <br>
+
+                              <div class="form-group row">
+                                <label for="luminosidade" class="col-xs-30 col-form-label">Luminosidade</label>
+                                <div class="col-xs-20">
+                                  <input class="form-control" type="text" value="" name="luminosidade">
+                                </div>
+                              </div>
+                              <br>
+
+                              <div class="form-group row">
+                                <label for="linkproduto" class="col-xs-30 col-form-label">Link para o produto</label>
+                                <div class="col-xs-20">
+                                  <input class="form-control" type="url" value="" name="link">
+                                </div>
+                              </div>
+                              <br>
+
+                              <div class="form-group row">
+                                <label for="linkfoto" class="col-xs-30 col-form-label">Link para foto do produto</label>
+                                <div class="col-xs-20">
+                                  <input class="form-control" type="url" value="" name="linkfoto">
+                                </div>
+                              </div>
+                              <br>
+
+                              <button type="submit">
+                                Cadastrar
+                              </button>
+                            </form>
+                          </div>
+                      </div>
+                  </div>
+                </div>
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="menuOpcoes">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" href="#login">Login</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#services">Conheça nossos produtos</a>
-                    </li>
-
-                    <li>
-                        <a class="page-scroll" href="#contact">Contato</a>
-                    </li>
-                    <!-- #####################CADASTRO###################### -->
-
-                    <li>
-                        <a class="page-scroll" href="#cadastro">Cadastrar</a>
-                    </li>
-                    <!-- ########################################### -->
-
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-    <form class="" action="" method="post">  {% csrf_token %}
-      <div class="form-group row">
-        <label for="usuario" class="col-xs-2 col-form-label">Usuário</label>
-        <div class="col-xs-10">
-          <input class="form-control" type="text" value="" id="usuario">
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="temperatura" class="col-xs-2 col-form-label">Temperatura</label>
-        <div class="col-xs-10">
-          <input class="form-control" type="text" value="" id="temperatura">
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="umidade" class="col-xs-2 col-form-label">Umidade</label>
-        <div class="col-xs-10">
-          <input class="form-control" type="text" value="" id="umidade">
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="ruido" class="col-xs-2 col-form-label">Ruído</label>
-        <div class="col-xs-10">
-          <input class="form-control" type="text" value="" id="ruido">
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="luminosidade" class="col-xs-2 col-form-label">Luminosidade</label>
-        <div class="col-xs-10">
-          <input class="form-control" type="text" value="" id="luminosidade">
-        </div>
-      </div>
-
-      <div class="form-group row">
-          <label for="linkproduto" class="col-xs-2 col-form-label">Link para o produto</label>
-          <div class="col-xs-10">
-            <input class="form-control" type="url" value="" id="linkproduto">
-          </div>
-      </div>
-
-      <div class="form-group row">
-          <label for="linkfoto" class="col-xs-2 col-form-label">Link para foto do produto</label>
-          <div class="col-xs-10">
-            <input class="form-control" type="url" value="" id="linkfoto">
-          </div>
-      </div>
-
-      <button type="submit">
-        Cadastrar
-      </button>
-    </form>
+    </section>
 
     <!-- jQuery -->
     <!--<script src="{% static "vendor/jquery/jquery.js" %}"></script>-->

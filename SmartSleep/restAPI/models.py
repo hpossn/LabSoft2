@@ -5,7 +5,6 @@ import datetime
 class User(Document):
     username = StringField(required=True)
     password = StringField(required=True)
-    deviceID = StringField(required=True)
 
 class information(Document):
     deviceID = StringField(required=True)

@@ -40,97 +40,87 @@
   <![endif]-->
 
   </head>
-  <body>
+  <body id="page-top">
 
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menuOpcoes">
-                    <span class="sr-only">Mudar navegação</span>Menu<i class="fa fa-bars"></i>
-                </button>
+    <section class="bg-primary" id="login">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center col-sm-12 col-xm-12 ">
+                    <h2 class="section-heading">Cadastro de Pessoa Jurídica</h2>
+                    <hr class="light">
+                </div>
+                <div id="divCadastroBagagem" class="text-center">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-lg-4 col-lg-offset-4 text-center">
+                            <form class="" action="" method="post">  {% csrf_token %}
+                              <div class="form-group row">
+                                <label for="razaosocial" class="col-xs-30 col-form-label">Razão Social</label>
+                                <div class="col-xs-20">
+                                  <input class="form-control" type="text" value="" name="razaosocial">
+                                </div>
+                              </div>
+                              <br>
+
+                              <div class="form-group row">
+                                <label for="email" class="col-xs-30 col-form-label">E-mail</label>
+                                <div class="col-xs-20">
+                                  <input class="form-control" type="email" value="" name="email">
+                                </div>
+                              </div>
+                              <br>
+
+                              <div class="form-group row">
+                                <label for="telefone" class="col-xs-30 col-form-label">Telefone</label>
+                                <div class="col-xs-20">
+                                  <input class="form-control" type="tel" value="" name="telefone">
+                                </div>
+                              </div>
+                              <br>
+
+                              <div class="form-group row">
+                                <label for="cnpj" class="col-xs-30 col-form-label">CNPJ</label>
+                                <div class="col-xs-20">
+                                  <input class="form-control" type="text" value="" name="cnpj">
+                                </div>
+                              </div>
+                              <br>
+
+                              <div class="form-group row">
+                                <label for="endereco" class="col-xs-30 col-form-label">Endereço</label>
+                                <div class="col-xs-20">
+                                  <input class="form-control" type="text" value="" name="endereco">
+                                </div>
+                              </div>
+                              <br>
+
+                              <div class="form-group row">
+                                <label for="user" class="col-xs-30 col-form-label">Usuário</label>
+                                <div class="col-xs-20">
+                                  <input class="form-control" type="text" value="" name="username">
+                                </div>
+                              </div>
+                              <br>
+
+                              <div class="form-group row">
+                                <label for="senha" class="col-xs-30 col-form-label">Senha</label>
+                                <div class="col-xs-20">
+                                  <input class="form-control" type="password" value="" name="password">
+                                </div>
+                              </div>
+                              <br>
+
+                              <button type="submit">
+                                Cadastrar
+                              </button>
+                            </form>
+                          </div>
+                      </div>
+                  </div>
+                </div>
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="menuOpcoes">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" href="#login">Login</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#services">Conheça nossos produtos</a>
-                    </li>
-
-                    <li>
-                        <a class="page-scroll" href="#contact">Contato</a>
-                    </li>
-                    <!-- #####################CADASTRO###################### -->
-
-                    <li>
-                        <a class="page-scroll" href="#cadastro">Cadastrar</a>
-                    </li>
-                    <!-- ########################################### -->
-
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-    <form class="" action="" method="post">  {% csrf_token %}
-      <div class="form-group row">
-        <label for="razaosocial" class="col-xs-2 col-form-label">Razão Social</label>
-        <div class="col-xs-10">
-          <input class="form-control" type="text" value="" id="razaosocial">
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="email" class="col-xs-2 col-form-label">E-mail</label>
-        <div class="col-xs-10">
-          <input class="form-control" type="email" value="" id="email">
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="telefone" class="col-xs-2 col-form-label">Telefone</label>
-        <div class="col-xs-10">
-          <input class="form-control" type="tel" value="" id="telefone">
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="cnpj" class="col-xs-2 col-form-label">CNPJ</label>
-        <div class="col-xs-10">
-          <input class="form-control" type="text" value="" id="cnpj">
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="endereco" class="col-xs-2 col-form-label">Endereço</label>
-        <div class="col-xs-10">
-          <input class="form-control" type="text" value="" id="endereco">
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="user" class="col-xs-2 col-form-label">Usuário</label>
-        <div class="col-xs-10">
-          <input class="form-control" type="text" value="" id="user">
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="senha" class="col-xs-2 col-form-label">Senha</label>
-        <div class="col-xs-10">
-          <input class="form-control" type="password" value="" id="senha">
-        </div>
-      </div>
-
-      <button type="submit">
-        Cadastrar
-      </button>
-    </form>
+    </section>
 
     <!-- jQuery -->
     <!--<script src="{% static "vendor/jquery/jquery.js" %}"></script>-->
