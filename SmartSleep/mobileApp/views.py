@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 import requests
 from .models import *
+from restAPI.models import User
 
 @csrf_exempt
 def login(request):
@@ -14,7 +15,7 @@ def login(request):
         username = request.POST['username']
         password = request.POST['password']
 
-        r = requests.post("http://127.0.0.1:8000/restAPI/login", data={"username" : username, "password" : password})
+        r = requests.post("http://104.236.90.130:8000/restAPI/login", data={"username" : username, "password" : password})
 
         r = r.json()
 
@@ -33,7 +34,7 @@ def home(request):
         return render(request, 'mainPage.html', {'deviceID' : request.GET['deviceID']})
 
 def get_temperaturas(deviceID):
-    all_temps = requests.get("http://127.0.0.1:8000/restAPI/temperaturas?deviceID=" + deviceID)
+    all_temps = requests.get("http://104.236.90.130:8000/restAPI/temperaturas?deviceID=" + deviceID)
 
     firsDay=[]
     secondDay=[]
