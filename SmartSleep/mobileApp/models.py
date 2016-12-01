@@ -1,12 +1,6 @@
 from django.db import models
 from mongoengine import *
 
-class User(Document):
-    username = StringField(required=True)
-    password = StringField(required=True)
-    deviceID = StringField(required=False)
-
-
 class ClienteFis(Document):
     nome = StringField(required=True)
     CPF = StringField(required=True)
