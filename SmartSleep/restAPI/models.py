@@ -22,3 +22,12 @@ class ClienteFis(Document):
     telefone = StringField(required=True)
     user = ObjectIdField(required=True)
     dateTime = DateTimeField(default=datetime.datetime.now)
+
+class Produto(Document):
+    temperatura = StringField(required=True)
+    umidade = StringField(required=True)
+    ruido = StringField(required=True)
+    luminosidade = StringField(required=True)
+    link = StringField(required=True)
+    link_foto = StringField(required=True)
+    user = ObjectIdField(required=True)

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.template.context_processors import csrf
-from .models import User, information
+from .models import User, information, Produto
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from datetime import datetime, timedelta, date
@@ -185,3 +185,30 @@ def ruidos(request):
     if request.method == 'GET':
         result = information.objects(Q(dataType = 'ruido') & Q(deviceID=deviceID))
         return HttpResponse(result.to_json(), content_type="application/json")
+
+@csrf_exempt
+def user(request):
+    if request.method == 'GET' and 'deviceID' in request.GET:
+        deviceID = request.GET['deviceID']
+
+        todosProdutos = Produto.objects()
+        mediaTemperatura = information.objects(Q(dataType = 'temperatura') & Q(deviceID=deviceID)).average('data')
+        mediaUmidade = information.objects(Q(dataType = 'umidade') & Q(deviceID=deviceID)).average('data')
+        mediaLuminosidade = information.objects(Q(dataType = 'luminosidade') & Q(deviceID=deviceID)).average('data')
+        mediaRuido = information.objects(Q(dataType = 'ruido') & Q(deviceID=deviceID)).average('data')
+
+        produtosUsuario = [ ]
+
+        for produto in todosProdutos:
+            if produto.temperatura == "":
+                produto.temperatura = "0"
+            if produto.umidade == "":
+                produto.umidade = "0"
+            if produto.luminosidade == "":
+                produto.luminosidade = "0"
+            if produto.ruido == "":
+                produto.ruido = "0"
+
+            if float(produto.temperatura) > mediaTemperatura and float(produto.umidade) > mediaUmidade and float(produto.luminosidade) > mediaLuminosidade and float(produto.ruido) > mediaRuido:
+                produtosUsuario.append(produto)
+        return HttpResponse(json.dumps(produtosUsuario), content_type="application/json")
