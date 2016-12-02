@@ -122,7 +122,7 @@ def mainpageJur(request):
         ruido = request.POST['ruido']
         luminosidade = request.POST['luminosidade']
         link = request.POST['link']
-        link_foto = request.POST['linkfoto']
+        link_foto = request.POST['link_foto']
 
 
 

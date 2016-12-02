@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+
+<head>
 
     {% load static %}
 
@@ -10,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Início</title>
+    <title>SmartSleep</title>
 
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -39,106 +40,107 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-  </head>
-  <body id="page-top">
+</head>
 
-    <section class="bg-primary" id="login">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center col-sm-12 col-xm-12 ">
-                    <h2 class="section-heading">Cadastro de Produto</h2>
-                    <hr class="light">
-                </div>
-                <div id="divCadastroBagagem" class="text-center">
-                  <div class="container">
-                      <div class="row">
-                          <div class="col-lg-4 col-lg-offset-4 text-center">
-                            <form class="" action="mainpageJur" method="post">  {% csrf_token %}
-                              <div class="form-group row">
-                                <label for="usuario" class="col-xs-30 col-form-label">Usuário</label>
-                                <div class="col-xs-20">
-                                  <input class="form-control" type="text" value="" name="usuario">
-                                </div>
+<body>
+
+   <section class="bg-primary">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-lg-6 col-lg-offset-3">
+                          <h3 class="section-heading">Preencha os campos abaixo e clique em cadastrar:</h3>
+                          <br>
+                          <form class="" action="" method="post">  {% csrf_token %}
+
+
+
+                            <div class="input-group input-group-md">
+                            <span class="input-group-addon">Usuario</span>
+                            <input class="form-control input-size-fixed" name="usuario">
+                            </div>
+                            <br>
+
+
+
+
+                            <div class="input-group input-group-md">
+                            <span class="input-group-addon">Link do produto no site da empresa</span>
+                            <input class="form-control input-size-fixed" name="link">
+                            </div>
+                            <br>
+
+                            <div class="input-group input-group-md">
+                            <span class="input-group-addon">Link para uma foto do produto</span>
+                            <input class="form-control input-size-fixed" name="link_foto">
+                            </div>
+                            <br>
+
+
+                            <h5 class="section-heading">Para os campos abaixo, selecione para qual tipo de ambiente o seu produto é indicado:</h5>
+
+                            <div class="input-group input-group-md">
+
+                                  <span class="input-group-addon">Ruido</span>
+                                  <select class="form-control" name="ruido">
+                                      <option value=""></option>
+                                      <option value="1">Ambientes com bastante ruido</option>
+                                      <option value="-1">Ambientes com pouco ruido</option>
+                                  </select>
                               </div>
+
+                              <br><div class="input-group input-group-md">
+
+                                    <span class="input-group-addon">Umidade</span>
+                                    <select class="form-control" name="umidade">
+                                        <option value=""></option>
+                                        <option value="1">Ambientes umidos</option>
+                                        <option value="-1">Ambientes com baixa umidade</option>
+                                    </select>
+                                </div>
+
+                                <br>
+
+                            <div class="input-group input-group-md">
+
+                                  <span class="input-group-addon">Luminosidade</span>
+                                  <select class="form-control" name="luminosidade">
+                                      <option value=""></option>
+                                      <option value="1">Ambientes claros</option>
+                                      <option value="-1">Ambientes escuros</option>
+                                  </select>
+                              </div>
+
+                          <br>
+
+
+
+
+                            <div class="input-group input-group-md">
+
+                                  <span class="input-group-addon">Temperatura</span>
+                                  <select class="form-control" name="temperatura">
+                                      <option value=""></option>
+                                      <option value="1">Ambientes quentes</option>
+                                      <option value="-1">Ambientes frios</option>
+                                  </select>
+                              </div>
+
+                              <br>
+                              <br>
                               <br>
 
-                              <div class="form-group row">
-                                <label for="temperatura" class="col-xs-30 col-form-label">Temperatura</label>
-                                <div class="col-xs-20">
-                                  <input class="form-control" type="text" value="" name="temperatura">
-                                </div>
-                              </div>
-                              <br>
 
-                              <div class="form-group row">
-                                <label for="umidade" class="col-xs-30 col-form-label">Umidade</label>
-                                <div class="col-xs-20">
-                                  <input class="form-control" type="text" value="" name="umidade">
-                                </div>
-                              </div>
-                              <br>
 
-                              <div class="form-group row">
-                                <label for="ruido" class="col-xs-30 col-form-label">Ruído</label>
-                                <div class="col-xs-20">
-                                  <input class="form-control" type="text" value="" name="ruido">
-                                </div>
-                              </div>
-                              <br>
 
-                              <div class="form-group row">
-                                <label for="luminosidade" class="col-xs-30 col-form-label">Luminosidade</label>
-                                <div class="col-xs-20">
-                                  <input class="form-control" type="text" value="" name="luminosidade">
-                                </div>
-                              </div>
-                              <br>
 
-                              <div class="form-group row">
-                                <label for="linkproduto" class="col-xs-30 col-form-label">Link para o produto</label>
-                                <div class="col-xs-20">
-                                  <input class="form-control" type="url" value="" name="link">
-                                </div>
-                              </div>
-                              <br>
+                            <button class="btn-primary btn-lg" type="submit"/>Cadastrar</button>
 
-                              <div class="form-group row">
-                                <label for="linkfoto" class="col-xs-30 col-form-label">Link para foto do produto</label>
-                                <div class="col-xs-20">
-                                  <input class="form-control" type="url" value="" name="linkfoto">
-                                </div>
-                              </div>
-                              <br>
+                          </form>
 
-                              <button type="submit" class="btn-primary btn-lg">
-                                Cadastrar
-                              </button>
-                            </form>
-                          </div>
-                      </div>
                   </div>
-                </div>
-            </div>
-        </div>
-    </section>
+              </div>
+          </div>
 
-    <!-- jQuery -->
-    <!--<script src="{% static "vendor/jquery/jquery.js" %}"></script>-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{% static "vendor/bootstrap/js/bootstrap.min.js" %}"></script>
-
-    <!-- Plugin JavaScript -->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="{% static "vendor/scrollreveal/scrollreveal.min.js" %}"></script>
-    <script src="{% static "vendor/magnific-popup/jquery.magnific-popup.min.js" %}"></script>
-
-
-
-    <!-- Theme JavaScript -->
-    <script src="{% static "js/creative.min.js" %}"></script>
 
   </body>
 </html>
